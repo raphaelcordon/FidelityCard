@@ -33,7 +33,7 @@ namespace WebAppMain.Services
                     using var form = new MultipartFormDataContent();
                     using var fileContent = new ByteArrayContent(memoryStream.ToArray());
                     fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
-                    form.Add(fileContent, "file", file.FileName);
+                    form.Add(fileContent, "file", Guid.NewGuid().ToString() + ".jpeg");
 
                     var response = await client.PostAsync(baseUrl, form);
 
